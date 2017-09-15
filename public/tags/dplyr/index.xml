@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dplyr on My New Hugo Site</title>
+    <link>/tags/dplyr/</link>
+    <description>Recent content in Dplyr on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Sep 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/dplyr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rmarkdown</title>
+      <link>/post/rmarkdown/</link>
+      <pubDate>Fri, 15 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rmarkdown/</guid>
+      <description>The packages required to run the codelibrary(Lahman)library(dplyr)Selecting a particular Column in the dataframenow , suppose we would like to see the homerun totals for the 1927 new york yankees. we could run the following code
+Batting%&amp;gt;%select(playerID,yearID,teamID,HR)%&amp;gt;%filter(teamID==&amp;quot;NYA&amp;quot; &amp;amp; yearID==1927)## playerID yearID teamID HR## 1 beallwa01 1927 NYA 0## 2 bengobe01 1927 NYA 0## 3 collipa01 1927 NYA 7## 4 combsea01 1927 NYA 6## 5 duganjo01 1927 NYA 2## 6 durstce01 1927 NYA 0## 7 gazelmi01 1927 NYA 0## 8 gehrilo01 1927 NYA 47## 9 giardjo01 1927 NYA 0## 10 grabojo01 1927 NYA 0## 11 hoytwa01 1927 NYA 0## 12 koenima01 1927 NYA 3## 13 lazzeto01 1927 NYA 18## 14 meusebo01 1927 NYA 8## 15 moorewi01 1927 NYA 1## 16 morehra01 1927 NYA 1## 17 paschbe01 1927 NYA 2## 18 pennohe01 1927 NYA 0## 19 pipgrge01 1927 NYA 1## 20 ruethdu01 1927 NYA 1## 21 ruthba01 1927 NYA 60## 22 shawkbo01 1927 NYA 0## 23 shockur01 1927 NYA 0## 24 thomamy01 1927 NYA 0## 25 weraju01 1927 NYA 1Arranging a Column in Descending OrderNow,the following code gives the list of all the players that have scored more than 40 homeruns from New York Yankees Team.</description>
+    </item>
+    
+  </channel>
+</rss>

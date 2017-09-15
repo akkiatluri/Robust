@@ -1,0 +1,145 @@
+---
+title: Rmarkdown
+author: Akhilesh Atluri
+date: '2017-09-15'
+slug: rmarkdown
+categories: [R]
+tags: [dplyr,Lahman,Baseball,Datascience]
+description: ''
+thumbnail: ''
+---
+
+
+
+<div id="the-packages-required-to-run-the-code" class="section level2">
+<h2>The packages required to run the code</h2>
+<pre class="r"><code>library(Lahman)
+library(dplyr)</code></pre>
+</div>
+<div id="selecting-a-particular-column-in-the-dataframe" class="section level2">
+<h2>Selecting a particular Column in the dataframe</h2>
+<p>now , suppose we would like to see the homerun totals for the 1927 new york yankees. we could run the following code</p>
+<pre class="r"><code>Batting%&gt;%
+  select(playerID,yearID,teamID,HR)%&gt;%
+filter(teamID==&quot;NYA&quot; &amp; yearID==1927)</code></pre>
+<pre><code>##     playerID yearID teamID HR
+## 1  beallwa01   1927    NYA  0
+## 2  bengobe01   1927    NYA  0
+## 3  collipa01   1927    NYA  7
+## 4  combsea01   1927    NYA  6
+## 5  duganjo01   1927    NYA  2
+## 6  durstce01   1927    NYA  0
+## 7  gazelmi01   1927    NYA  0
+## 8  gehrilo01   1927    NYA 47
+## 9  giardjo01   1927    NYA  0
+## 10 grabojo01   1927    NYA  0
+## 11  hoytwa01   1927    NYA  0
+## 12 koenima01   1927    NYA  3
+## 13 lazzeto01   1927    NYA 18
+## 14 meusebo01   1927    NYA  8
+## 15 moorewi01   1927    NYA  1
+## 16 morehra01   1927    NYA  1
+## 17 paschbe01   1927    NYA  2
+## 18 pennohe01   1927    NYA  0
+## 19 pipgrge01   1927    NYA  1
+## 20 ruethdu01   1927    NYA  1
+## 21  ruthba01   1927    NYA 60
+## 22 shawkbo01   1927    NYA  0
+## 23 shockur01   1927    NYA  0
+## 24 thomamy01   1927    NYA  0
+## 25  weraju01   1927    NYA  1</code></pre>
+</div>
+<div id="arranging-a-column-in-descending-order" class="section level2">
+<h2>Arranging a Column in Descending Order</h2>
+<p>Now,the following code gives the list of all the players that have scored more than 40 homeruns from New York Yankees Team.</p>
+<pre class="r"><code>Batting%&gt;%
+  select(playerID,yearID,teamID,HR,SO,AB)%&gt;%
+  filter(teamID == &quot;NYA&quot; &amp; HR &gt; 40)%&gt;%
+  arrange(desc(HR))</code></pre>
+<pre><code>##     playerID yearID teamID HR  SO  AB
+## 1  marisro01   1961    NYA 61  67 590
+## 2   ruthba01   1927    NYA 60  89 540
+## 3   ruthba01   1921    NYA 59  81 540
+## 4   ruthba01   1920    NYA 54  80 457
+## 5   ruthba01   1928    NYA 54  87 536
+## 6  mantlmi01   1961    NYA 54 112 514
+## 7  rodrial01   2007    NYA 54 120 583
+## 8  mantlmi01   1956    NYA 52  99 533
+## 9   ruthba01   1930    NYA 49  61 518
+## 10 gehrilo01   1934    NYA 49  31 579
+## 11 gehrilo01   1936    NYA 49  46 579
+## 12 rodrial01   2005    NYA 48 139 605
+## 13  ruthba01   1926    NYA 47  76 495
+## 14 gehrilo01   1927    NYA 47  84 584
+## 15  ruthba01   1924    NYA 46  81 529
+## 16  ruthba01   1929    NYA 46  60 499
+## 17 gehrilo01   1931    NYA 46  56 619
+## 18  ruthba01   1931    NYA 46  51 534
+## 19 dimagjo01   1937    NYA 46  37 621
+## 20 martiti02   1997    NYA 44  75 594
+## 21 grandcu01   2012    NYA 43 195 596
+## 22 mantlmi01   1958    NYA 42 120 519
+## 23  ruthba01   1923    NYA 41  93 522
+## 24 gehrilo01   1930    NYA 41  63 581
+## 25  ruthba01   1932    NYA 41  62 457
+## 26 jacksre01   1980    NYA 41 122 514
+## 27 giambja01   2002    NYA 41 112 560
+## 28 giambja01   2003    NYA 41 140 535
+## 29 grandcu01   2011    NYA 41 169 583</code></pre>
+<p>Next let’s find all the players from the data who has scored over 40 homeruns but have less than 60 strikeouts.</p>
+</div>
+<div id="f-iltering-rows-depending-on-the-statistics" class="section level2">
+<h2>F iltering rows depending on the statistics</h2>
+<pre class="r"><code>Batting%&gt;%
+  select(playerID,yearID,teamID,HR,SO)%&gt;%
+  filter(SO &lt; 60 ,HR &gt;= 40)%&gt;%
+  arrange(desc(HR))</code></pre>
+<pre><code>##     playerID yearID teamID HR SO
+## 1   mizejo01   1947    NY1 51 42
+## 2  gehrilo01   1934    NYA 49 31
+## 3  gehrilo01   1936    NYA 49 46
+## 4  kluszte01   1954    CIN 49 35
+## 5  pujolal01   2006    SLN 49 50
+## 6  kluszte01   1955    CIN 47 40
+## 7  aaronha01   1971    ATL 47 58
+## 8  gehrilo01   1931    NYA 46 56
+## 9   ruthba01   1931    NYA 46 51
+## 10 dimagjo01   1937    NYA 46 37
+## 11 bondsba01   2002    SFN 46 47
+## 12 pujolal01   2004    SLN 46 52
+## 13 bondsba01   2003    SFN 45 58
+## 14 bondsba01   2004    SFN 45 41
+## 15 aaronha01   1957    ML1 44 58
+## 16 aaronha01   1969    ATL 44 47
+## 17  mizejo01   1940    SLN 43 49
+## 18 willite01   1949    BOS 43 48
+## 19 rosenal01   1953    CLE 43 48
+## 20 hornsro01   1922    SLN 42 50
+## 21   ottme01   1929    NY1 42 38
+## 22 troskha01   1936    CLE 42 58
+## 23 kinerra01   1951    PIT 42 57
+## 24 sievero01   1957    WS1 42 55
+## 25 willicy01   1923    PHI 41 57
+## 26 camparo01   1953    BRO 41 58
+## 27  mayswi01   1954    NY1 41 57
+## 28 thomafr04   1993    CHA 41 54
+## 29 kleinch01   1930    PHI 40 50
+## 30  mizejo01   1948    NY1 40 37
+## 31 kluszte01   1953    CIN 40 34
+## 32 aaronha01   1973    ATL 40 51</code></pre>
+<p>If we want to see players with more than 30 homeruns scored from Phillies in 1970’s we can use the following code.</p>
+<pre class="r"><code>Batting%&gt;%
+  select(playerID,yearID,teamID,HR,SO,AB)%&gt;%
+  filter(teamID == &quot;PHI&quot; &amp; HR &gt; 30 &amp; yearID &gt;=1970 &amp; yearID &lt;= 1979)%&gt;%
+  arrange(desc(HR))</code></pre>
+<pre><code>##    playerID yearID teamID HR  SO  AB
+## 1 schmimi01   1979    PHI 45 115 541
+## 2 luzingr01   1977    PHI 39 140 554
+## 3 schmimi01   1975    PHI 38 180 562
+## 4 schmimi01   1976    PHI 38 149 584
+## 5 schmimi01   1977    PHI 38 122 544
+## 6 schmimi01   1974    PHI 36 138 568
+## 7 luzingr01   1978    PHI 35 135 540
+## 8 johnsde01   1971    PHI 34 146 582
+## 9 luzingr01   1975    PHI 34 151 596</code></pre>
+</div>
